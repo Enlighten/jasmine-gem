@@ -33,7 +33,7 @@ module Jasmine
 
     def js_files(spec_filter = nil)
       spec_files_to_include = spec_filter.nil? ? spec_files : match_files(spec_dir, [spec_filter])
-      src_files.collect {|f| "/" + f } + helpers.collect {|f| File.join(spec_path, f) } + spec_files_to_include.collect {|f| File.join(spec_path, f) }
+      lib_files.collect {|f| "/" + f} + src_files.collect {|f| "/" + f } + helpers.collect {|f| File.join(spec_path, f) } + spec_files_to_include.collect {|f| File.join(spec_path, f) }
     end
 
     def user_stylesheets
@@ -108,6 +108,14 @@ module Jasmine
 
     def jasmine_javascripts
       ::Jasmine::Core.js_files.map {|f| "/__JASMINE_ROOT__/#{f}" }
+    end
+
+    def lib_files
+      if simple_config['lib_files']
+        simple_config['lib_files']
+      else
+        []
+      end
     end
   end
 end

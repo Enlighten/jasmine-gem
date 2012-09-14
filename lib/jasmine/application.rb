@@ -22,7 +22,8 @@ module Jasmine
             run Rails.application.assets
           end
         end
-
+        puts "Mounting Jammit for Assets"
+        use Jammit::Middleware
         map('/run.html')         { run Rack::Jasmine::Redirect.new('/') }
         map('/__suite__')        { run Rack::Jasmine::FocusedSuite.new(config) }
 
