@@ -6,7 +6,6 @@ require 'rack/jasmine/focused_suite'
 require 'rack/jasmine/redirect'
 require 'rack/jasmine/cache_control'
 require 'ostruct'
-require 'jammit'
 
 module Jasmine
   class Application
